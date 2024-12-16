@@ -6,6 +6,7 @@ public class Engine {
     private double maxFuel;
     private double currentFuel;
     private FuelType fuelType;
+    private double fuelLoss = 3;
 
      /**
      * Constructs an Engine object with the specified fuel type and maximum fuel capacity.
@@ -53,14 +54,14 @@ public class Engine {
         this.currentFuel = maxFuel;
     } 
     /**
-     * Simulates the operation of the engine by decreasing the current fuel level.
+     * Simulates the operation of the engine by decreasing the current fuel level by the fuelloss.
      *
      * @return true if the engine can continue operating (fuel level > 0), false otherwise
      */
     
     public boolean go(){
-        if(currentFuel>0){
-            currentFuel -= 5;
+        if(currentFuel > 0 && currentFuel > fuelLoss){
+            currentFuel -= fuelLoss;
             System.out.println("Current fuel level:" + currentFuel);
             return currentFuel>0;
         }else{

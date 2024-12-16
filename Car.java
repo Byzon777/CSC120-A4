@@ -29,7 +29,7 @@ public class Car {
      *
      * @return maximum number of passengers in car
      */
-    public int getmaxCapacity(){
+    public int getCapacity(){
         return maxCapacity;
     }
 
@@ -46,26 +46,30 @@ public class Car {
      * Boards the the passenger if there is available space.
      *
      * @param p the passenger to board
+     * @return status of whether passenger was able to board successfuly or not
      */
     public boolean addPassenger(Passenger p){
-        if(!passengers.contains(p) && seatsRemaining()>0){
-            passengers.add(p);
-            return true;
-        }else{
-            System.out.println("Car is full, please try another car");
+        if(passengers.contains(p)){
+            throw new RuntimeException("Passenger is already onboard");
         }
-        return false;
+        if(seatsRemaining()<=0){
+            throw new RuntimeException("Car is full, please try another car");
+        }
+        passengers.add(p);
+        return true;
     }
     /**
      * Gets off the passenger if the passenger is onboard.
      *
      * @param p the passenger to get off
+     * @return status of whether passenger was able to unboard successfuly or not
      */
     public boolean removePassenger(Passenger p) {
-        if(passengers.contains(p)){
-            return passengers.remove(p);
+        if(!passengers.contains(p)){
+            throw new RuntimeException("Passenger is not onboard");
         } else {
-            return false;
+            passengers.remove(p);
+            return true;
         }
     }
 

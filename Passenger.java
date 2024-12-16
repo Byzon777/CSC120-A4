@@ -30,10 +30,11 @@ public class Passenger {
      */
 
     public void boardCar(Car c){
-        if (c.addPassenger(this)) {
+        try {
+            c.addPassenger(this);
             System.out.println(name + " boarded the car.");
-        } else {
-            System.out.println("Sorry, " + name + ", the car is full. You cannot board.");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
     
@@ -43,10 +44,11 @@ public class Passenger {
      * @param c the car to get off
      */
     public void getOffCar(Car c) {
-        if (c.removePassenger(this)) {
+        try {
+            c.removePassenger(this); 
             System.out.println(name + " got off the car.");
-        } else {
-            System.out.println(name + " was not onboard the car.");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 

@@ -53,7 +53,7 @@ public class Train {
     public int getMaxCapacity(){
         int totalEngineCapacity = 0;
         for (Car car: cars){
-            totalEngineCapacity += car.getmaxCapacity();
+            totalEngineCapacity += car.getCapacity();
         }
         return totalEngineCapacity;
     }
@@ -63,7 +63,7 @@ public class Train {
      *
      * @return the remaining seats in the train
      */
-    public int engineSeatsRemaining(){
+    public int seatsRemaining(){
         int totalEngineSeatsRemaining = 0;
         for (Car car: cars){
             totalEngineSeatsRemaining += car.seatsRemaining();
@@ -92,7 +92,7 @@ public class Train {
         p3.boardCar(train.getCar(1));
 
         train.printManifest();
-        System.out.println("Seats remaining: " + train.engineSeatsRemaining());
+        System.out.println("Seats remaining: " + train.seatsRemaining());
     }
     
 }
